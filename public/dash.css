@@ -1,0 +1,151 @@
+body{
+    background-color: white;
+}
+.navbar { 
+    margin-top: 5px;
+    display:flex;
+   background-color: #9EC6F3;
+   border-radius: 20px;
+   text-align: center;
+   backdrop-filter: blur(10px);
+   border-radius: 20px;
+   height: 10%; 
+   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.194);
+}
+.profile{
+    margin-left: auto;
+}
+.nav-link{
+   color: black;
+   transition: 0.3s;
+   font-weight: lighter;
+   font-family: sans-serif;
+}
+.nav-link:hover{
+   color: rgb(0, 0, 0);
+   background-color: rgb(255, 255, 255);
+   border-radius: 30px;
+   font-weight: bolder;
+
+}
+.dropdown-menu li :hover{
+    background-color: #9EC6F3;
+}
+.welcome{
+   color: white;
+}
+.quickOptions{
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 10px;
+   margin-bottom: 10px;
+}
+.quickOptions button{
+    margin-top: 5px;
+   height:80px;
+   /* width: 15%; */
+   border-radius: 10px;
+   border: none;
+   transition: all 0.3s ease;
+}
+.quickOptions button:hover{
+   transform: translateY(-10px);
+   box-shadow: 0 12px 24px rgba(152, 152, 152, 0.194);
+
+}
+.filterdiv{
+    margin-left: 25%;
+}
+.filterdiv select {
+    border-radius: 5px;
+}
+.filterdiv button,a{
+    border: none;
+    border-radius: 5px;
+    background-color: #9EC6F3;
+    color: white;
+    text-decoration: none;
+}
+.addtask{
+   
+    padding: 20px;
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-bottom: 15px;
+}
+.addtask h2{
+   color: white;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+   background-color: #9EC6F3;
+   width: 15%;
+   text-align: center;
+   margin: 0;
+   font-family:monospace;
+}
+.addtask .addTask{
+   background-color: #9EC6F3;
+   width: 15%;
+   border-top-right-radius: 20px;
+   border-bottom-right-radius: 20px;
+   border-style: none;
+   color: white;
+   font-size: 20px;
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+   transition: all 0.3s ease;
+   text-align: center;
+   font-family:monospace;
+}
+.addtask .addTask:hover{
+   background-color: white;
+   color: black;
+   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+.card{
+background-color: #9EC6F3;
+}
+#updateTaskBtn{
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #83bdff;
+    /* box-shadow: 0px 0px 15px #9EC6F3; */
+}
+.username  {
+text-align: center;
+}
+#deleteTaskBtn{
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(221, 48, 48);
+}
+#deleteTaskBtn:hover{
+    box-shadow: 0px 0px 15px black;
+}
+#updateTaskBtn:hover{
+    box-shadow: 0px 0px 15px #97b8ff;
+}
+.tasks{
+    
+   margin-top: 10px;
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+   /* border: 1px solid ; */
+   border-radius: 10px;
+   background-color: rgb(56, 56, 56);
+   gap: 15px;
+   flex-wrap: wrap;
+   background-color: white;
+}
+@media(max-width:515px){
+    .addtask h2{
+        width: 25%;
+    }
+    .addtask .addtask{
+      width: 25px;
+    }
+}

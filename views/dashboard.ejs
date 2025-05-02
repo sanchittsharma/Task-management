@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+ 
+    <nav class="navbar" style="display: flex; align-items: center; justify-content: space-between;">
+        <!-- Left section (nav items) -->
+        <ul class="nav" style="display: flex; gap: 1rem;">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"><%=userName %>'s Dashboard</a>
+            </li>
+        </ul>
+   <div class="dropdown">
+  <a class="btn dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span>User: <%=userName %></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><a class="dropdown-item" href="">View Profile</a></li>
+    <li><a class="dropdown-item" href="/settings">Settings</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+  </ul>
+    </nav>
+    
+    <!-- <div class="addtask">
+        <h2 class="taskhead">Your tasks</h2>
+        <button class="addTask" data-bs-toggle="modal" data-bs-target="#AddTaskModal">add task</button>
+    </div> -->
+    
+    <div class="quickOptions">
+       
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-send-check-fill" viewBox="0 0 16 16">
+            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 1.59 2.498C8 14 8 13 8 12.5a4.5 4.5 0 0 1 5.026-4.47zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
+            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686"/>
+          </svg> Total Tasks: <%=tasks.length  %></button>
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-emoji-sunglasses-fill" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M2.31 5.243A1 1 0 0 1 3.28 4H6a1 1 0 0 1 1 1v.116A4.2 4.2 0 0 1 8 5c.35 0 .69.04 1 .116V5a1 1 0 0 1 1-1h2.72a1 1 0 0 1 .97 1.243l-.311 1.242A2 2 0 0 1 11.439 8H11a2 2 0 0 1-1.994-1.839A3 3 0 0 0 8 6c-.393 0-.74.064-1.006.161A2 2 0 0 1 5 8h-.438a2 2 0 0 1-1.94-1.515zM4.969 9.75A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .866-.5z"/>
+          </svg> Completed task : <%=completedTasks.length%></button>
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-emoji-astonished-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.884-3.978a2.1 2.1 0 0 1 .53.332.5.5 0 0 0 .708-.708h-.001v-.001a2 2 0 0 0-.237-.197 3 3 0 0 0-.606-.345 3 3 0 0 0-2.168-.077.5.5 0 1 0 .316.948 2 2 0 0 1 1.458.048m-4.774-.048a.5.5 0 0 0 .316-.948 3 3 0 0 0-2.167.077 3.1 3.1 0 0 0-.773.478q-.036.03-.07.064l-.002.001a.5.5 0 1 0 .728.689 2 2 0 0 1 .51-.313 2 2 0 0 1 1.458-.048M7 6.5C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5m4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5m-5.247 4.746c-.383.478.08 1.06.687.98q1.56-.202 3.12 0c.606.08 1.07-.502.687-.98C9.747 10.623 8.998 10 8 10s-1.747.623-2.247 1.246"/>
+          </svg> Pending Task: <%=pendingTasks.length  %></button>
+    </div>
+    <!-- ex  -->
+    <div class="addtask">
+        <h2 class="taskhead">Your tasks</h2>
+        <button class="addTask" data-bs-toggle="modal" data-bs-target="#AddTaskModal">add task</button>
+    </div>
+     <div class="filterdiv">
+
+    <form method="GET" action="/filter">
+        <label>Status:</label>
+        <select name="status">
+          <option value="">-- All --</option>
+          <option value="Pending" <%=tasks.status === "Pending" ? "selected" : "" %>>Pending</option>
+          <option value="Completed" <%= tasks.status === "Completed" ? "selected" : "" %>>Completed</option>
+        </select>
+      
+        <label>Priority:</label>
+        <select name="priority">
+          <option value="">-- All --</option>
+          <option value="Low" <%= tasks.priority === "Low" ? "selected" : "" %>>Low</option>
+          <option value="Medium" <%= tasks.priority === "Medium" ? "selected" : "" %>>Medium</option>
+          <option value="High" <%= tasks.priority === "High" ? "selected" : "" %>>High</option>
+        </select>
+      
+        <label>Due Date:</label>
+        <input type="date" name="dueDate" value="<%= tasks.dueDate || "" %>" />
+      
+        <button type="submit">Apply Filters</button>
+        <button ><a href="/dashboard">Reset Filters</a></button>
+      </form>
+    </div>
+    <!-- ex  -->
+  
+    <div class="tasks container">
+        <% if (!tasks.length) { %>
+            <h2>No Tasks Found</h2>
+          <% } %>
+       <% tasks.forEach(task => { %>
+        <div class="card" style="width: 18rem;">
+            
+            <div class="card-body">
+              <h5 class="card-title">Title: <%=task.taskName %></h5>
+              <p class="card-text">Detail: <%= task.description %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <% if (task.taskPriority==="Low") { %>
+                    <li class="list-group-item ">Priority: <span class="badge rounded-pill text-bg-info">  <%=task.taskPriority %></span>
+                    </li>
+                  <% } %>
+                <% if (task.taskPriority==="Medium") { %>
+                    <li class="list-group-item "> Priority: <span class="badge rounded-pill text-bg-warning"><%=task.taskPriority %></span>
+                    </li>
+                  <% } %>
+                <% if (task.taskPriority==="High") { %>
+                    <li class="list-group-item "> Priority: <span class="badge rounded-pill text-bg-danger"><%=task.taskPriority %></span>
+                    </li>
+                  <% } %>
+                  <% 
+                  const date = new Date(task.dueDate);
+                  const dd = String(date.getDate()).padStart(2, '0');
+                  const mm = String(date.getMonth() + 1).padStart(2, '0');
+                  const yy = String(date.getFullYear()).toString().slice(-2);
+                  const formattedDate = `${dd}/${mm}/${yy}`;
+                %>
+              <li class="list-group-item">Due Date:  <%=formattedDate %></li>
+              <% if (task.status==="Completed") { %>
+                <li class="list-group-item ">Status: <span class="badge rounded-pill text-bg-success"> <%=task.status %></span></li>
+              <% } %>
+              <% if (task.status==="Pending") { %>
+                <li class="list-group-item ">Status: <span class="badge rounded-pill text-bg-warning"> <%=task.status %></span></li>
+              <% } %>
+              <li class="list-group-item"><button data-bs-toggle="modal" data-bs-target="#updateTask" id="updateTaskBtn">Update Task</button></li>
+            </ul>
+        
+          </div>
+       <% }) %>
+        
+        
+    </div>
+    <!-- create task modal  -->
+    <div class="modal fade" id="AddTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/addTask" method="post">
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Enter Task Name</label>
+                            <input type="text" id="taskName" class="form-control" name="taskName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskPriority" class="form-label">Select Priority</label>
+                            <select name="taskPriority" id="taskPriority" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">Hard</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description">Enter Decription</label>
+                            <textarea name="description" id="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" name="dueDate" id="dueDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" required>
+                                <option value="Completed">Completed</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+                        <button type="submit">Submit</button>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Update task modal  -->
+    <div class="modal fade" id="updateTask" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/updateTask?_method=PATCH" method="post">
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Enter Task Name</label>
+                            <input type="text" id="taskName" class="form-control" name="taskName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskPriority" class="form-label">Select Priority</label>
+                            <select name="taskPriority" id="taskPriority" >
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">Hard</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description">Enter Decription</label>
+                            <textarea name="description" id="description" ></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" name="dueDate" id="dueDate" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" >
+                                <option value="Completed">Completed</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+                        <button type="submit">Submit</button>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- User Profile Modal -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"
+        integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+nav{
+    margin-top: 30px;
+   /* border: 1px solid black; */
+    gap: 20px;
+    padding: 5px;
+    /* background-color: #4C3BCF; */
+    background-color: #89ABE3FF;
+}
+nav .nav-link{
+    color: white;
+}
+body{
+    /* background-color: #8AAAE5; */
+    background-color: #FCF6F5FF;
+}
+.welcome{
+    border: 1px solid;
+}
+.addtask{
+    display: flex;
+    justify-content: center;
+   
+}
+.addtask button{
+    
+}
+.taskhead {
+    
+    text-align: center;
+}
+.tasks{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid ;
+    gap: 15px;
+    /* height: 70vh;
+    width: 100vw; */
+    flex-wrap: wrap;
+}
