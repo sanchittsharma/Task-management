@@ -24,29 +24,24 @@ async function restrictToLoginUser(req, res, next) {
   const userUid = req.cookies?.uid;
   if (!userUid) {
     console.log("No token found in cookies.");
-    return res.redirect("/"); // No token => Redirect to login
+    return res.redirect("/"); 
   }
 
   try {
     // Decode the token
     const decoded = jwt.verify(userUid, secretKey);
-    // console.log("Decoded JWT:", decoded);  // Check what is inside the decoded JWT
-
-    // Fetch the user from the database
     const user = await User.findOne({ userEmail: decoded.userEmail });
     if (!user) {
       console.log("User not found:", decoded.userEmail);
-      return res.redirect("/");  // If no user found => Redirect to login
+      return res.redirect("/");  
     }
-
-    // Attach the user to the request object
     req.user = user;
-    // console.log("User found:", user);  // Debugging to see the user object
+    // console.log( user);
 
-    next();  // Continue to the next middleware or route handler
+    next();  
   } catch (err) {
     console.error("JWT verification failed:", err.message);
-    return res.redirect("/");  // In case of error (invalid token, etc.), redirect to login
+    return res.redirect("/");  
   }
 }
 
